@@ -1,0 +1,8 @@
+D:\Projects1\.Net Core\testingCore1\testingCore1\obj\Debug\net7.0\testingCore1.csproj.AssemblyReference.cache
+D:\Projects1\.Net Core\testingCore1\testingCore1\obj\Debug\net7.0\testingCore1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects1\.Net Core\testingCore1\testingCore1\obj\Debug\net7.0\testingCore1.AssemblyInfoInputs.cache
+D:\Projects1\.Net Core\testingCore1\testingCore1\obj\Debug\net7.0\testingCore1.AssemblyInfo.cs
+D:\Projects1\.Net Core\testingCore1\testingCore1\obj\Debug\net7.0\testingCore1.csproj.CoreCompileInputs.cache
+D:\Projects1\.Net Core\testingCore1\testingCore1\obj\Debug\net7.0\testingCore1.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects1\.Net Core\testingCore1\testingCore1\obj\Debug\net7.0\testingCore1.RazorAssemblyInfo.cache
+D:\Projects1\.Net Core\testingCore1\testingCore1\obj\Debug\net7.0\testingCore1.RazorAssemblyInfo.cs
