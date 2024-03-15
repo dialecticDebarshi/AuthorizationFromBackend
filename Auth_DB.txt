@@ -1,0 +1,104 @@
+CREATE TABLE [dbo].[BusinessAdminProfile_Access_Map_Dtls1](
+	[TenantId] [int] NOT NULL,
+	[EMPLOYEE_MASTER_KEY] [int] NOT NULL,
+	[BusinessAdminProfileID] [int] NOT NULL,
+	[CompanyId] [int] NOT NULL,
+	[UserTypeId] [int] NOT NULL,
+	[HeadAccessId] [int] NOT NULL,
+	[EffectiveDate] [smalldatetime] NULL,
+	[CreatedBy] [int] NOT NULL,
+	[CreatedDate] [smalldatetime] NOT NULL,
+	[ModiefiedBy] [int] NULL,
+	[ModiefiedDate] [smalldatetime] NULL,
+	[ActiveFlag] [int] NOT NULL,
+ CONSTRAINT [PK_BusinessAdminProfile_Access_Map_Dtls1] PRIMARY KEY CLUSTERED 
+(
+	[TenantId] ASC,
+	[EMPLOYEE_MASTER_KEY] ASC,
+	[BusinessAdminProfileID] ASC,
+	[CompanyId] ASC,
+	[UserTypeId] ASC,
+	[HeadAccessId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[BusinessAdminProfile_Access_Map_Dtls2](
+	[TenantId] [int] NOT NULL,
+	[EMPLOYEE_MASTER_KEY] [int] NOT NULL,
+	[BusinessAdminProfileID] [int] NOT NULL,
+	[CompanyId] [int] NOT NULL,
+	[UserTypeId] [int] NOT NULL,
+	[HeadAccessId] [int] NOT NULL,
+	[ApplicationId] [int] NOT NULL,
+	[ModuleId] [int] NOT NULL,
+	[ActionId] [int] NOT NULL,
+	[ActionValue] [int] NOT NULL,
+	[EffectiveDate] [smalldatetime] NOT NULL,
+	[CreatedBy] [int] NOT NULL,
+	[CreatedDate] [smalldatetime] NOT NULL,
+	[ModiefiedBy] [int] NULL,
+	[ModiefiedDate] [smalldatetime] NULL,
+	[ActiveFlag] [int] NOT NULL,
+ CONSTRAINT [PK_BusinessAdminProfile_Access_Map_Dtls2] PRIMARY KEY CLUSTERED 
+(
+	[TenantId] ASC,
+	[EMPLOYEE_MASTER_KEY] ASC,
+	[BusinessAdminProfileID] ASC,
+	[CompanyId] ASC,
+	[UserTypeId] ASC,
+	[HeadAccessId] ASC,
+	[ApplicationId] ASC,
+	[ModuleId] ASC,
+	[ActionId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) 
+
+
+CREATE TABLE [dbo].[ApplicationModuleMaster](
+	[TenantID] [int] NOT NULL,
+	[ApplicationId] [int] NOT NULL,
+	[ModuleId] [int] NOT NULL,
+	[ModuleName] [varchar](50) NULL,
+	[ModuleHierarchy] [decimal](18, 2) NULL,
+	[ModuleParentId] [int] NULL,
+	[ModuleTypeId] [int] NULL,
+	[ModuleLink] [varchar](max) NULL,
+	[ActiveFlag] [int] NOT NULL,
+ CONSTRAINT [PK_ApplicationModuleMaster] PRIMARY KEY CLUSTERED 
+(
+	[TenantID] ASC,
+	[ApplicationId] ASC,
+	[ModuleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[ApplicationModule_ApprovalLevel_Map](
+	[TenantId] [int] NOT NULL,
+	[ApplicationId] [int] NOT NULL,
+	[ModuleId] [int] NOT NULL,
+	[APPROVAL_LVL1_KEY] [int] NOT NULL,
+ CONSTRAINT [PK_ApplicationModule_ApprovalLevel_Map] PRIMARY KEY CLUSTERED 
+(
+	[TenantId] ASC,
+	[ApplicationId] ASC,
+	[ModuleId] ASC,
+	[APPROVAL_LVL1_KEY] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[ApplicationModule_ApprovalLevel_Map](
+	[TenantId] [int] NOT NULL,
+	[ApplicationId] [int] NOT NULL,
+	[ModuleId] [int] NOT NULL,
+	[APPROVAL_LVL1_KEY] [int] NOT NULL,
+ CONSTRAINT [PK_ApplicationModule_ApprovalLevel_Map] PRIMARY KEY CLUSTERED 
+(
+	[TenantId] ASC,
+	[ApplicationId] ASC,
+	[ModuleId] ASC,
+	[APPROVAL_LVL1_KEY] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
