@@ -1,0 +1,62 @@
+﻿
+@{
+
+    //Layout = null;
+    string selectedvalue = "";
+    string selectedCompanyvalue = "";
+    string selectedCompanyDesignation = "";
+
+    if (Context != null && Context.Request != null)
+    {
+        
+        string userData = Context.Session.GetString("UserData");
+
+        if (userData == null && !Context.Request.Path.Equals("/UserLoginToken/Login", StringComparison.OrdinalIgnoreCase))
+        {
+    <script>
+                window.location.href = '@Url.Action("Login", "UserLoginToken")';
+            </script>
+        }
+        else
+        {
+            if (Context.Session.GetString("SelectedJobRole") != null)
+            {
+                selectedvalue = Context.Session.GetString("SelectedJobRole");
+            }
+            if (Context.Session.GetString("SelectedCompany") != null)
+            {
+                selectedCompanyvalue = Context.Session.GetString("SelectedCompany");
+            }
+            if (Context.Session.GetString("SelectedCompanyDesignation") != null)
+            {
+                selectedCompanyDesignation = Context.Session.GetString("SelectedCompanyDesignation");
+            }
+        }
+    }
+
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $.ajax({
+            type: "GET",
+             url: '/TenantCompanyProfile/Authorization',
+            contentType: "application/json, charset=utf-8",
+            traditional:true,
+            data: { CompanyKey: @selectedCompanyvalue, DesignationKey: @selectedCompanyDesignation },
+            success: function (response) {
+                debugger;
+                
+                $('[id*="side-menu"]').html(response);
+            },
+            error: function () {
+                console.log('Error fetching data');
+            }
+        });
+    });
+   
+</script>
+
+<ul id="side-menu"></ul>

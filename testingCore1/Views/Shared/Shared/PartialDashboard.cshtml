@@ -1,0 +1,195 @@
+﻿@using Newtonsoft.Json
+@{
+
+    Layout = null;
+    string selectedvalue = "";
+    string selectedCompanyvalue = "";
+    string selectedCompanyDesignation = "";
+
+    if (Context != null && Context.Request != null)
+    {
+
+        string userData = Context.Session.GetString("UserData");
+
+        if (userData == null && !Context.Request.Path.Equals("/UserLoginToken/Login", StringComparison.OrdinalIgnoreCase))
+        {
+            <script>
+                window.location.href = '@Url.Action("Login", "UserLoginToken")';
+            </script>
+        }
+        else
+        {
+            VM_UserLoginResponse loginresponse = JsonConvert.DeserializeObject<VM_UserLoginResponse>(userData);
+            ViewBag.UserName = loginresponse.UserName;
+            var EmployeeMasterKey = loginresponse.Employee_Master_Key;
+            if (Context.Session.GetString("SelectedJobRole") != null)
+            {
+                selectedvalue = Context.Session.GetString("SelectedJobRole");
+            }
+            if (Context.Session.GetString("SelectedCompany") != null)
+            {
+                selectedCompanyvalue = Context.Session.GetString("SelectedCompany");
+            }
+            if (Context.Session.GetString("SelectedCompanyDesignation") != null)
+            {
+                selectedCompanyDesignation = Context.Session.GetString("SelectedCompanyDesignation");
+            }
+            <input type="hidden" id="EmployeeMasterKey" value="@EmployeeMasterKey" />
+        }
+        
+    }
+
+}
+
+
+
+
+<div class="container-fluid">
+
+
+   @* <div style="margin-bottom:20px">
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-top border-0 border-4 border-info">
+                <div class="card-body" style="padding-bottom: 1px; padding-top: 1px; box-shadow: 2px 2px 35px Gray">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Panel</a></li>
+                                
+                            </ol>
+                        </div>
+
+                        <h4 class="page-title">Panel</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-top border-0 border-4 border-info">
+                <div class="card-body" style=" box-shadow: 2px 2px 25px Gray">
+                    <div class="row">
+                        <div class="col-sm-6 p-2 ml-2">
+                            <div class="row" onclick="SendManager('@selectedCompanyvalue')"
+                                 style="background-color:#457e3e;border-radius:1rem;color:whitesmoke;box-shadow:inset 2px 2px 5px;
+                             margin:2rem 2rem;">
+                                <h3 style="color:whitesmoke;">Pending Approval</h3>
+                                <div class="col-4 mb-2">
+                                    <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
+                                        <i class="fe-eye font-22 avatar-title text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-end">
+
+                                        <h3 class="text-dark mt-1"><span id="param1Element" style="color:whitesmoke" data-plugin="counterup"></span></h3>
+
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <div style="margin-bottom:20px">
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-top border-0 border-4 border-info">
+                <div class="card-body" style="padding-bottom: 1px; padding-top: 1px; box-shadow: 2px 2px 2px #54F2C2">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Panel</a></li>
+
+                            </ol>
+                        </div>
+
+                        <h4 class="page-title" style="color: #014A65 !important ;  font-weight: bold; font-family: oswald; background-color: floralwhite !important;">Panel</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <div class="page-content">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+
+                <div class="col">
+                   
+                    <div class="card-body" style="box-shadow: 2px 2px 25px white; width: 355px;" onmouseover="this.style.boxShadow='2px 2px 18px #e6e95a'" onmouseout="this.style.boxShadow='2px 2px 18px white'">
+
+                        
+
+                        <div class="card radius-20 border-start border-0 border-2" style="border-color: #213c19 !important; background-color: #a1d194 !important;border-radius:1rem;box-shadow:2px 2px 10px #14240f" onmouseover="this.style.backgroundColor='#ffb866'; this.style.borderColor='#190020'" onmouseout="this.style.backgroundColor='#a1d194'; this.style.borderColor='#213c19'">
+                            
+                            <div class="card-body" onclick="SendManager('@selectedCompanyvalue')">
+                                <div class="row mb-2" style="background-color:blue">
+                                    <h5 class="card-title mt-2" style="color:white">Employee</h5>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-sm rounded-circle font-15 bg-soft-custom border me-3" style="background-color: #2e5324 ; border-color: #2e5324  !important;" onmouseover="this.style.background-color='#ffd5b3' ; this.style.border-color='#ffd5b3' " onmouseout="this.style.background-color='#2e5324' ; this.style.border-color='#2e5324' ">
+
+                                        <i class="mdi mdi-account" style="font-size: 31px; color:white !important" onmouseover="this.style.color='white'" onmouseout="this.style.color='white'"></i>
+
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <h6 class="mb-2 text-secondary" style="color: 	#14240f !important; font-weight: bold;font-family: oswald;font-size:20px !important" onmouseover="this.style.color='#3c2719'" onmouseout="this.style.color='#14240f'">Pending Approval</h6>
+
+                                        </div>
+                                        <div class="ms-3">
+                                            <h4 class="text-dark mt-2"><span id="param1Element" style="color: #14240f;" onmouseover="this.style.color='#3c2719'" onmouseout="this.style.color='#14240f'" data-plugin="counterup"></span></h4>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        var jsonData = {
+            Rec_Type: "COUNT_INVENTORY",
+            EmployeeId: $('#EmployeeMasterKey').val(),
+            User_Type_Key: @selectedvalue,
+            Mast_Hrd_Draft_Personnel_Key: 0,
+            Company_Key: @selectedCompanyvalue
+        }
+        $.post({
+            url: '/TenantCompanyProfile/GetHeadList', // Replace with your actual API endpoint
+            data: { model: jsonData },
+            success: function (response) {
+
+                $('#param1Element').text(response.count);
+                
+                // Trigger a custom event or any mechanism to notify the Dashboard page
+
+
+                //window.location.href = "/TenantCompanyProfile/Dashboard?param1=" + response.count + "&param2=" + response.company;
+                // Handle the success response
+                //console.log('Success:', response);
+            },
+            error: function (error) {
+
+            }
+        });
+    });
+
+</script>
